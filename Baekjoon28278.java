@@ -1,5 +1,6 @@
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Scanner;
+import java.io.InputStreamReader;
 import java.util.Stack;
 
 public class Baekjoon28278 {
@@ -9,42 +10,45 @@ public class Baekjoon28278 {
         stack.add(n);
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder(); // 출력을 모아둘 StringBuilder
+
+        int N = Integer.parseInt(br.readLine());;
 
         for (int i = 0; i < N; i++) {
-            int command = sc.nextInt();
+            String line = br.readLine();
+            int command = Integer.parseInt(line.split(" ")[0]);
 
             switch (command) {
                 case 1:
-                    int num = sc.nextInt();
+                    int num = Integer.parseInt(line.split(" ")[1]);
                     addInt(num);
-                    continue;
+                    break;
                 case 2:
                     if (stack.isEmpty()) {
-                        System.out.println(-1);
+                        sb.append("-1\n");
                     } else {
-                        System.out.println(stack.pop());
+                        sb.append(stack.pop()).append("\n");
                     }
-                    continue;
+                    break;
                 case 3:
-                    System.out.println(stack.size());
-                    continue;
+                    sb.append(stack.size()).append("\n");
+                    break;
                 case 4:
-                    System.out.println(stack.isEmpty() ? 1 : 0);
-                    continue;
+                    sb.append(stack.isEmpty() ? 1 : 0).append("\n");
+                    break;
                 case 5:
                     if (stack.isEmpty()) {
-                        System.out.println(-1);
+                        sb.append("-1\n");
                     } else {
-                        System.out.println(stack.peek());
+                        sb.append(stack.peek()).append("\n");
                     }
-                    continue;
-                default:
                     break;
             }
         }
+        System.out.print(sb.toString());
+        br.close();
     }
 }
 
