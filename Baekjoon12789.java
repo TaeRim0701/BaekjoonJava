@@ -22,7 +22,11 @@ public class Baekjoon12789 {
 
         while (!now.isEmpty()) {
             if (target != now.peek()) {
-                place.add(now.poll());
+                if (!place.isEmpty() && place.peek() == target) {
+                    afterReceive.add(place.pop());
+                } else {
+                    place.add(now.poll());
+                }
             } else {
                 afterReceive.add(now.poll());
                 target++;
