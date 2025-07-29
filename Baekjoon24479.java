@@ -17,7 +17,7 @@ public class Baekjoon24479 {
         int R = Integer.parseInt(line[2]);
         
         adj = new ArrayList<>();
-        for (int i = 0; i <= M; i++) {
+        for (int i = 0; i <= N; i++) {
             adj.add(new ArrayList<>());
         }
 
@@ -31,7 +31,7 @@ public class Baekjoon24479 {
             adj.get(u).add(v);
             adj.get(v).add(u);
         }
-        for (int i = 0; i <= N; i++) {
+        for (int i = 1; i <= N; i++) {
             Collections.sort(adj.get(i));
         }
 
