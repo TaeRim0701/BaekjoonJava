@@ -11,35 +11,32 @@ public class Baekjoon2346 {
         StringBuilder sb = new StringBuilder();
 
         int N = Integer.parseInt(br.readLine());
-        Deque<Integer> q = new ArrayDeque<>();
-        Deque<Integer> idx = new ArrayDeque<>();
-        int target = 0;
+        Deque<int[]> q = new ArrayDeque<>();
         String line = br.readLine();
 
         for (int i = 0; i < N; i++) {
-            q.add(Integer.parseInt(line.split(" ")[i]));
-            idx.add(i + 1);
+            q.add(new int[]{Integer.parseInt(line.split(" ")[i]), i + 1});
         }
+
+        int[] current = q.pollFirst();
+        sb.append(current[1]).append(" ");
+        int target = current[0];
 
         while (!q.isEmpty()) {
-            if (target == 1) {
-                q.add(q.pollFirst());
-                idx.add(idx.pollFirst());
-            } else {
+            if (target > 0) {
                 for (int i = 1; i < target; i++) {
-                    q.add(q.pollFirst());
-                    idx.add(idx.pollFirst());
+                    q.addLast(q.pollFirst());
+                }
+            } else {
+                for (int i = 0; i < Math.abs(target); i++) { // 왜 음수일 때는 target - 1을 하지 않는지?
+                    q.addFirst(q.pollLast());
                 }
             }
-            sb.append(idx.pollFirst()).append(" ");
-            target = q.pollFirst();
 
-            if (target < 0) {
-                target = q.size() + target;
-            }
+            current = q.pollFirst();
+            sb.append(current[1]).append(" ");
+            target = current[0];
         }
-
         System.out.println(sb);
-
     }
 }
