@@ -12,10 +12,10 @@ public class Baekjoon2346 {
 
         int N = Integer.parseInt(br.readLine());
         Deque<int[]> q = new ArrayDeque<>();
-        String line = br.readLine();
+        String[] line = br.readLine().split(" ");
 
         for (int i = 0; i < N; i++) {
-            q.add(new int[]{Integer.parseInt(line.split(" ")[i]), i + 1});
+            q.add(new int[]{Integer.parseInt(line[i]), i + 1});
         }
 
         int[] current = q.pollFirst();
