@@ -26,13 +26,6 @@ public class Baekjoon2667 {
                 Map[i][j] = Integer.parseInt(line[j]);
             }
         }
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                System.out.print(Map[i][j]);
-            }
-            System.out.println();
-        }
-
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
